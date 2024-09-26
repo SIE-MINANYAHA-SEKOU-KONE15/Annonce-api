@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const authMiddlewares_1 = require("../middlewares/authMiddlewares");
+const annonceController_1 = require("../controllers/annonceController");
+const router = (0, express_1.Router)();
+const annonceController = new annonceController_1.AnnonceController();
+router.post("/", authMiddlewares_1.authMiddlewares, annonceController.createAnnonce);
+router.get("/", annonceController.getAnnonce);
+router.get("/:id", annonceController.getAnnonceById);
+router.put("/:id", authMiddlewares_1.authMiddlewares, annonceController.updateAnnonce);
+router.delete("/:id", authMiddlewares_1.authMiddlewares, annonceController.deleteAnnonce);
+exports.default = router;
