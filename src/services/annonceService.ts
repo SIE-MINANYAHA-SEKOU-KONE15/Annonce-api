@@ -7,7 +7,8 @@ export class AnnonceService {
   }
 
   async getAnnonce(): Promise<IAnnonce[]> {
-    return await Annonce.find().populate("owner");
+    const annonces = await Annonce.find();
+    return annonces;
   }
 
   async getAnnonceById(id: string): Promise<IAnnonce | null> {

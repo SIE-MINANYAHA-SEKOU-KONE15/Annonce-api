@@ -2,13 +2,14 @@ import jwt from "jsonwebtoken";
 
 export const formatResponse = (
   statusCode: number,
-  data: any,
-  message: string
+  errorMessage: string,
+  stack?: any
 ) => {
   return {
     status: statusCode,
-    data: data,
-    message: message,
+
+    message: errorMessage,
+    stack: stack,
   };
 };
 
